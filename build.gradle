@@ -37,3 +37,23 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+
+bootBuildImage {
+	String dockerId = project.findProperty('docker_id')
+	String dockerPw = project.findProperty('docker_pw')
+
+	// 이미지 이름을 구성합니다.
+	imageName = "${dockerId}/${project.name}"
+	publish = true
+
+	imagePlatform.set("linux/amd64")
+
+	docker {
+
+		publishRegistry {
+			username = dockerId
+			password = dockerPw
+		}
+	}
+}
