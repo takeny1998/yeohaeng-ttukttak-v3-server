@@ -1,4 +1,4 @@
-INSERT INTO Place (id, name, type, longitude, latitude, level1, level2, level3, level4) VALUES
+INSERT INTO Place (id, name, category, longitude, latitude, level1, level2, level3, level4) VALUES
 (1, '청주 자연공원', 'nature', 127.4895, 36.6413, 43, 111, 000, 00),
 (2, '청주 박물관', 'culture', 127.4885, 36.6403, 43, 111, 000, 00),
 (3, '청주 성안길', 'tourism', 127.4905, 36.6423, 43, 111, 000, 00),

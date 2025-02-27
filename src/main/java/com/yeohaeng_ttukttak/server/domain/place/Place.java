@@ -18,7 +18,7 @@ public class Place {
 
     @NotNull
     @Enumerated(EnumType.STRING)
-    private PlaceType type;
+    private PlaceCategory category;
 
     @Embedded
     private Coordinates coordinates;

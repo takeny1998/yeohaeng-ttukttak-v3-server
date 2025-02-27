@@ -21,6 +21,10 @@ spring:
   flyway:
     enabled: false
 
+bayesian:
+  entire-average: 3.475
+  coefficient: 15.0
+
 ---
 spring:
   config:
@@ -43,3 +47,7 @@ spring:
   flyway:
     enabled: true
     baseline-on-migrate: true
+
+bayesian:
+  entire-average: 4.21756905
+  coefficient: 5.0

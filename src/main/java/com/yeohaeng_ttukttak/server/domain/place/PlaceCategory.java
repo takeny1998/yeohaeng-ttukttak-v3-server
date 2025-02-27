@@ -1,6 +1,6 @@
 package com.yeohaeng_ttukttak.server.domain.place;
 
-public enum PlaceType {
+public enum PlaceCategory {
     nature,     // 자연 관광(nature, trail)
     tourism,    // 관광 명소 (landmark, attraction, themePark, recreation)
     culture,    // 문화 시설(culture, festival
