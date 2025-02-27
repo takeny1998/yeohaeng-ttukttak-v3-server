@@ -1,13 +1,12 @@
 package com.yeohaeng_ttukttak.server.domain.place;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Embedded;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+import lombok.Getter;
 import org.hibernate.annotations.Immutable;
 
 @Entity
+@Getter
 @Immutable
 public class Place {
 
@@ -18,15 +17,14 @@ public class Place {
     private String name;
 
     @NotNull
+    @Enumerated(EnumType.STRING)
     private PlaceType type;
-
-    @NotNull
-    private Integer locationCode;
 
     @Embedded
     private Coordinates coordinates;
 
     @Embedded
+    @NotNull
     private RegionCode regionCode;
 
 }
