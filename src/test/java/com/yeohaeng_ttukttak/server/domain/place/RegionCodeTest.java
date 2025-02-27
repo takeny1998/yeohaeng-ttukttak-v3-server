@@ -10,40 +10,28 @@ class RegionCodeTest {
 
     @Test
     void fromStringTest() {
+
         // Given
-        final String stringCode = "2915501000";
+        final String numericString = "2915501000";
 
         // When
-        RegionCode regionCode = RegionCode.of(stringCode);
+        final RegionCode regionCode = RegionCode.fromString(numericString);
 
-        // then
+        // Then
         assertThat(regionCode)
                 .extracting(RegionCode::getLevel1, RegionCode::getLevel2, RegionCode::getLevel3, RegionCode::getLevel4)
                 .containsExactly(29, 155, 10, 0);
-    }
-
-
-    public static class RegionCodeProxy extends RegionCode {
-
-        public RegionCodeProxy(int level1, int level2, int level3, int level4) {
-            super(level1, level2, level3, level4);
-        }
-
-        @Override
-        public boolean equals(Object obj) {
-            return super.equals(obj);
-        }
     }
 
     @Test
     void equalsTest() {
 
         final List<RegionCode> regionCodes = List.of(
-                new RegionCodeProxy(21, 10, 0, 0),  // 0: 21 010 000 00
-                new RegionCodeProxy(21, 10, 0, 0),  // 1: 21 010 000 00
-                new RegionCodeProxy(21, 20, 0, 0),  // 2: 21 020 000 00
-                new RegionCodeProxy(21, 10, 30, 0), // 3: 21 010 030 00
-                new RegionCodeProxy(23, 10, 0, 0)   // 4: 23 010 000 00
+                new RegionCode(21, 10, 0, 0),  // 0: 21 010 000 00
+                new RegionCode(21, 10, 0, 0),  // 1: 21 010 000 00
+                new RegionCode(21, 20, 0, 0),  // 2: 21 020 000 00
+                new RegionCode(21, 10, 30, 0), // 3: 21 010 030 00
+                new RegionCode(23, 10, 0, 0)   // 4: 23 010 000 00
         );
 
         assertThat(regionCodes.get(0))
