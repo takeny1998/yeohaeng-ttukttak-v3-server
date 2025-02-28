@@ -1,0 +1,66 @@
+spring:
+  profiles:
+    active: local
+
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+    url: ${spring.datasource.url}
+    user: ${spring.datasource.username}
+    password: ${spring.datasource.password}
+    locations:
+      - classpath:db/migration
+      - classpath:db/data
+
+bayesian:
+  entire-average: 3.475
+  coefficient: 15.0
+
+---
+spring:
+  config:
+    activate:
+      on-profile: local
+
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:yeohaeng_ttukttak_v3;MODE=MySQL;DATABASE_TO_LOWER=TRUE;DB_CLOSE_DELAY=-1
+    username: sa
+    password:
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: ${DATABASE_URL}
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MariaDBDialect
+
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+
+  flyway:
+    locations:
+        - classpath:db/migration
+
+bayesian:
+  entire-average: 4.21756905
+  coefficient: 5.0

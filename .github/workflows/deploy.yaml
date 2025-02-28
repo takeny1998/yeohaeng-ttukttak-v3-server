@@ -27,6 +27,16 @@ jobs:
             -Pdocker_id=${{ secrets.DOCKER_USERNAME }} \
             -Pdocker_pw=${{ secrets.DOCKER_PASSWORD }}
 
+      - name: Move Docker Compose File
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.REMOTE_SERVER_HOST }}
+          username: ${{ secrets.REMOTE_SERVER_USERNAME }}
+          password: ${{ secrets.REMOTE_SERVER_PASSWORD }}
+          port: ${{ secrets.REMOTE_SERVER_PORT }}
+          source: docker-compose.yml
+          target: ~/
+
       - name: Deploy on remote server
         uses: appleboy/ssh-action@master
         env:
@@ -37,24 +47,10 @@ jobs:
           password: ${{ secrets.REMOTE_SERVER_PASSWORD }}
           port: ${{ secrets.REMOTE_SERVER_PORT }}
           script: |
-            # Check if the container is running
-            if [ "$(docker ps -q -f name=${{ env.CONTAINER_NAME }})" ]; then
-              echo "Stopping and removing existing container..."
-              docker stop ${{ env.CONTAINER_NAME }} || { echo 'Failed to stop container'; exit 1; }
-              docker rm ${{ env.CONTAINER_NAME }} || { echo 'Failed to remove container'; exit 1; }
-            fi
-
-            # Pull the latest image
-            echo "Pulling the latest image..."
-            docker pull ${{ env.IMAGE_NAME }} || { echo 'Failed to pull image'; exit 1; }
-
-            # Run the new container
-            echo "Running the new container..."
-            docker run -d \
-              --name ${{ env.CONTAINER_NAME }} \
-              -p 8080:8080 \
-              ${{ env.IMAGE_NAME }} || { echo 'Failed to run container'; exit 1; }
-
-            # Cleanup old images (optional)
-            echo "Cleaning up old images..."
-            docker image prune -f || { echo 'Failed to prune old images'; exit 1; }
+            export DOCKER_USERNAME=${{ secrets.DOCKER_USERNAME }}
+            export DATABASE_USERNAME=${{ secrets.DATABASE_USERNAME }}
+            export DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }}
+            
+            docker compose down
+            docker compose pull
+            docker compose up -d
