@@ -5,6 +5,9 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import org.hibernate.annotations.Immutable;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Getter
 @Immutable
@@ -26,5 +29,8 @@ public class Place {
     @Embedded
     @NotNull
     private RegionCode regionCode;
+
+    @OneToMany(mappedBy = "place")
+    private List<PlaceImage> images = new ArrayList<>();
 
 }

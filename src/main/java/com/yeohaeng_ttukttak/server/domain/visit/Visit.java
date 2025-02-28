@@ -5,12 +5,16 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.DecimalMax;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotNull;
+import lombok.Getter;
+import lombok.ToString;
 import org.hibernate.annotations.Immutable;
 
 import java.time.LocalDate;
 
 @Entity
 @Immutable
+@ToString
+@Getter
 public class Visit {
 
     @Id @NotNull

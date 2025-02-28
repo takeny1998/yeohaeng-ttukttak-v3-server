@@ -5,10 +5,9 @@ import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.core.types.dsl.Expressions;
 import com.querydsl.core.types.dsl.NumberExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import com.yeohaeng_ttukttak.server.application.dto.PlaceDto;
+import com.yeohaeng_ttukttak.server.application.dto.QPlaceDto;
 import com.yeohaeng_ttukttak.server.application.dto.VisitAggregationDto;
 import com.yeohaeng_ttukttak.server.application.property.BayesianProperty;
-import com.yeohaeng_ttukttak.server.domain.place.Place;
 import com.yeohaeng_ttukttak.server.domain.place.QPlace;
 import com.yeohaeng_ttukttak.server.domain.place.RegionCode;
 import com.yeohaeng_ttukttak.server.domain.visit.QVisit;
@@ -36,16 +35,8 @@ public class PlaceQueryRepository {
         return queryFactory.select(
                 Projections.constructor(
                         VisitAggregationDto.class,
-                        ratingAvg.as("rating"),
-                        visitCount.as("count"),
-                        Projections.constructor(
-                                PlaceDto.class,
-                                place.id.as("id"),
-                                place.name.as("name"),
-                                place.regionCode.as("regionCode"),
-                                place.coordinates.longitude.as("longitude"),
-                                place.coordinates.latitude.as("latitude"))))
-                .from(visit)
+                        ratingAvg, visitCount, new QPlaceDto(place)
+                )).from(visit)
                 .join(visit.place, place)
                 .where(eqRegionCode(place, regionCode))
                 .groupBy(place)
