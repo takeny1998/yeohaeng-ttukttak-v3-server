@@ -1,12 +1,11 @@
 package com.yeohaeng_ttukttak.server.application.Repository;
 
-import com.querydsl.core.types.Projections;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.core.types.dsl.Expressions;
 import com.querydsl.core.types.dsl.NumberExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
+import com.yeohaeng_ttukttak.server.application.dto.PlaceDto;
 import com.yeohaeng_ttukttak.server.application.dto.QPlaceDto;
-import com.yeohaeng_ttukttak.server.application.dto.VisitAggregationDto;
 import com.yeohaeng_ttukttak.server.application.property.BayesianProperty;
 import com.yeohaeng_ttukttak.server.domain.place.QPlace;
 import com.yeohaeng_ttukttak.server.domain.place.RegionCode;
@@ -24,7 +23,7 @@ public class PlaceQueryRepository {
 
     private final BayesianProperty bayesianProperty;
 
-    public List<VisitAggregationDto> listByRegionCode(final RegionCode regionCode) {
+    public List<PlaceDto> findAllByRegionCode(final RegionCode regionCode) {
 
         final QPlace place = QPlace.place;
         final QVisit visit = QVisit.visit;
@@ -32,11 +31,7 @@ public class PlaceQueryRepository {
         final NumberExpression<Long> visitCount = visit.countDistinct();
         final NumberExpression<Double> ratingAvg = calBayesianAvg(visit.rating.sum(), visitCount);
 
-        return queryFactory.select(
-                Projections.constructor(
-                        VisitAggregationDto.class,
-                        ratingAvg, visitCount, new QPlaceDto(place)
-                )).from(visit)
+        return queryFactory.select(new QPlaceDto(place, ratingAvg, visitCount)).from(visit)
                 .join(visit.place, place)
                 .where(eqRegionCode(place, regionCode))
                 .groupBy(place)
