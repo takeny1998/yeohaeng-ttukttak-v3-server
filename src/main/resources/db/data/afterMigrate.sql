@@ -1,3 +1,9 @@
+SET foreign_key_checks = 0;
+TRUNCATE TABLE place;
+TRUNCATE TABLE visit;
+TRUNCATE TABLE image;
+TRUNCATE TABLE place_image;
+SET foreign_key_checks = 1;
 
 INSERT INTO
     place (id, name, category, longitude, latitude, level1, level2, level3, level4)

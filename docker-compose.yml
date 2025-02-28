@@ -30,7 +30,7 @@ services:
     image: ${DOCKER_USERNAME}/yeohaeng-ttukttak-v3-server:latest
     container_name: yeohaeng-ttukttak-v3-server
     environment:
-      JAVA_OPTS: -Dspring.profiles.active=prod
+      JAVA_OPTS: -Dspring.profiles.active=dev
       DATABASE_URL: jdbc:mariadb://database:3306/yeohaeng_ttukttak_v3
       DATABASE_USERNAME: ${DATABASE_USERNAME}
       DATABASE_PASSWORD: ${DATABASE_PASSWORD}
