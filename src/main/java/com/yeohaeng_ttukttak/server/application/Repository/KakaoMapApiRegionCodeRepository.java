@@ -2,7 +2,7 @@ package com.yeohaeng_ttukttak.server.application.Repository;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.yeohaeng_ttukttak.server.application.config.KakaoMapApiConfig;
-import com.yeohaeng_ttukttak.server.domain.place.RegionCode;
+import com.yeohaeng_ttukttak.server.domain.region.RegionCode;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;

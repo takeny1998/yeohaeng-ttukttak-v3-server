@@ -2,7 +2,7 @@ package com.yeohaeng_ttukttak.server.application.controller;
 
 import com.yeohaeng_ttukttak.server.application.Repository.PlaceQueryRepository;
 import com.yeohaeng_ttukttak.server.application.dto.PlaceDto;
-import com.yeohaeng_ttukttak.server.domain.place.RegionCode;
+import com.yeohaeng_ttukttak.server.domain.region.RegionCode;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;

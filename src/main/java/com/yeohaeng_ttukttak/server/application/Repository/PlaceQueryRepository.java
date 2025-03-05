@@ -8,7 +8,7 @@ import com.yeohaeng_ttukttak.server.application.dto.PlaceDto;
 import com.yeohaeng_ttukttak.server.application.dto.QPlaceDto;
 import com.yeohaeng_ttukttak.server.application.property.BayesianProperty;
 import com.yeohaeng_ttukttak.server.domain.place.QPlace;
-import com.yeohaeng_ttukttak.server.domain.place.RegionCode;
+import com.yeohaeng_ttukttak.server.domain.region.RegionCode;
 import com.yeohaeng_ttukttak.server.domain.visit.QVisit;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;

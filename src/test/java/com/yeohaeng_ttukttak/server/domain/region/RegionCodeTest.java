@@ -1,5 +1,6 @@
-package com.yeohaeng_ttukttak.server.domain.place;
+package com.yeohaeng_ttukttak.server.domain.region;
 
+import com.yeohaeng_ttukttak.server.domain.region.RegionCode;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

@@ -1,12 +1,14 @@
-package com.yeohaeng_ttukttak.server.domain.place;
+package com.yeohaeng_ttukttak.server.domain.region;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import jakarta.persistence.Embeddable;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.PositiveOrZero;
 import lombok.*;
 import org.hibernate.annotations.Immutable;
+import org.hibernate.validator.constraints.Length;
 import org.springframework.util.Assert;
 
 @Immutable
@@ -16,6 +18,9 @@ import org.springframework.util.Assert;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 public class RegionCode {
+
+    @NotEmpty
+    private String code;
 
     @NotNull
     @Positive
@@ -35,14 +40,7 @@ public class RegionCode {
         int level3 = Integer.parseInt(string.substring(5, 8));
         int level4 = Integer.parseInt(string.substring(8, 10));
 
-        return new RegionCode(level1, level2, level3, level4);
-
+        return new RegionCode(string, level1, level2, level3, level4);
     }
 
-    @Override
-    @JsonValue
-    public String toString() {
-        return String.format("%02d%03d%03d%02d",
-                getLevel1(), getLevel2(), getLevel3(), getLevel4());
-    }
 }

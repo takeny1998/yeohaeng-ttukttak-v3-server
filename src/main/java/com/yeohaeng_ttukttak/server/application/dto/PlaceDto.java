@@ -2,7 +2,7 @@ package com.yeohaeng_ttukttak.server.application.dto;
 
 import com.querydsl.core.annotations.QueryProjection;
 import com.yeohaeng_ttukttak.server.domain.place.Place;
-import com.yeohaeng_ttukttak.server.domain.place.RegionCode;
+import com.yeohaeng_ttukttak.server.domain.region.RegionCode;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

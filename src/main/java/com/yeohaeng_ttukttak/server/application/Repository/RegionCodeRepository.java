@@ -1,6 +1,6 @@
 package com.yeohaeng_ttukttak.server.application.Repository;
 
-import com.yeohaeng_ttukttak.server.domain.place.RegionCode;
+import com.yeohaeng_ttukttak.server.domain.region.RegionCode;
 
 import java.util.Optional;
 
