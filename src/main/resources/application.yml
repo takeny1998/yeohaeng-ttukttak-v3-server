@@ -15,6 +15,9 @@ spring:
 bayesian:
   entire-average: 3.475
   coefficient: 15.0
+kakao:
+  map:
+    api-key: ${KAKAO_MAP_API_KEY}
 
 ---
 spring:
