@@ -2,15 +2,6 @@ spring:
   profiles:
     active: local
 
-  flyway:
-    enabled: true
-    baseline-on-migrate: true
-    url: ${spring.datasource.url}
-    user: ${spring.datasource.username}
-    password: ${spring.datasource.password}
-    locations:
-      - classpath:db/migration
-      - classpath:db/data
 
 bayesian:
   entire-average: 3.475
@@ -34,6 +25,10 @@ spring:
   jpa:
     hibernate:
       ddl-auto: create-drop
+    defer-datasource-initialization: true
+
+  flyway:
+    enabled: false
 
 ---
 spring:
@@ -53,7 +48,17 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MariaDBDialect
+    defer-datasource-initialization: false
 
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+    url: ${spring.datasource.url}
+    user: ${spring.datasource.username}
+    password: ${spring.datasource.password}
+    locations:
+      - classpath:db/migration
+      -
 ---
 spring:
   config:
