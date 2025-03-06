@@ -25,10 +25,18 @@ spring:
   jpa:
     hibernate:
       ddl-auto: create-drop
-    defer-datasource-initialization: true
 
+    properties:
+      hibernate:
+        highlight_sql: true
   flyway:
     enabled: false
+
+logging:
+  level:
+    org.hibernate.SQL: debug
+    org.hibernate.orm.jdbc.bind: trace
+    com.yeohaeng_ttukttak.server: debug
 
 ---
 spring:
@@ -58,7 +66,6 @@ spring:
     password: ${spring.datasource.password}
     locations:
       - classpath:db/migration
-      -
 ---
 spring:
   config:

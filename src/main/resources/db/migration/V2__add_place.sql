@@ -1,4 +1,4 @@
-CREATE TABLE place(
+CREATE TABLE IF NOT EXISTS place(
     id BIGINT(20),
     name VARCHAR(255),
     category ENUM('nature', 'tourism', 'culture', 'commerce', 'transport', 'dining', 'lodging'),

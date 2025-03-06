@@ -1,10 +1,10 @@
-CREATE TABLE image (
+CREATE TABLE IF NOT EXISTS image (
     id BIGINT(20),
     url VARCHAR(255) NOT NULL,
     PRIMARY KEY (id)
 );
 
-CREATE TABLE place_image (
+CREATE TABLE IF NOT EXISTS place_image (
     id BIGINT(20),
     place_id BIGINT(20) NOT NULL,
     image_id BIGINT(20) NOT NULL,
