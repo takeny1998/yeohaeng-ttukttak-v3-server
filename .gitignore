@@ -356,3 +356,6 @@ gradle-app.setting
 # End of https://www.toptal.com/developers/gitignore/api/windows,macos,git,java,maven,eclipse,intellij,gradle,netbeans,visualstudiocode
 
 *.secret
+.idea/dataSources.xml
+.idea/sqldialects.xml
+.idea/sshConfigs.xml

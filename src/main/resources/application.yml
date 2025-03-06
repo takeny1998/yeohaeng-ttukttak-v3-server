@@ -29,6 +29,7 @@ spring:
     properties:
       hibernate:
         highlight_sql: true
+
   flyway:
     enabled: false
 
