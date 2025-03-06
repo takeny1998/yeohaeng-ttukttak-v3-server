@@ -1,6 +1,5 @@
 package com.yeohaeng_ttukttak.server.domain.region;
 
-import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
@@ -9,6 +8,7 @@ import org.hibernate.annotations.Immutable;
 @Entity
 @Immutable
 @Getter
+@ToString(exclude = "parent")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Region {
 
