@@ -28,13 +28,13 @@ class RegionCodeTest {
                 .level(4).level1(11).level2(110).level3(103).build();
 
         final RegionCode codeLevel1 = RegionCode.builder()
-                .level(1).build();
+                .level(1).level1(0).level2(0).level3(0).level4(0).build();
 
         final RegionCode codeLevel2 = RegionCode.builder()
-                .level(2).level1(11).build();
+                .level(2).level1(11).level2(0).level3(0).level4(0).build();
 
         final RegionCode codeLevel3 = RegionCode.builder()
-                .level(3).level1(11).level2(110).build();
+                .level(3).level1(11).level2(110).level3(0).level4(0).build();
 
         // When
         final RegionCode withLevel1 = RegionCode.withLowerLevel(regionCode, 1);
@@ -50,8 +50,8 @@ class RegionCodeTest {
     @Test
     void serializeTest() {
         // Given
-        final RegionCode regionCode =RegionCode.builder()
-                .level1(11).level2(110).level3(103).build();
+        final RegionCode regionCode = RegionCode.builder()
+                .level1(11).level2(110).level3(103).level4(0).build();
         final String expectString = "1111010300";
 
         // When
@@ -59,6 +59,22 @@ class RegionCodeTest {
 
         // Then
         assertThat(string).isEqualTo(expectString);
+    }
+
+    @Test
+    void equalsTest() {
+        // Given
+        final RegionCode regionCode = RegionCode.builder()
+                .level(4).level1(11).level2(110).level3(103).build();
+
+        final RegionCode regionCode2 = RegionCode.builder()
+                .level(4).level1(11).level2(110).level3(103).build();
+
+        // When
+        boolean isEquals = regionCode.equals(regionCode2);
+
+        // Then
+        assertThat(isEquals).isTrue();
     }
 
 }

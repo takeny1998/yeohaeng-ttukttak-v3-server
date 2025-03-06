@@ -26,7 +26,7 @@ public class RegionCode {
     @Size(min = 1, max = 5)
     private Integer level;
 
-    @Nullable
+    @NotNull
     @PositiveOrZero
     private Integer level1, level2, level3, level4;
 
@@ -34,10 +34,10 @@ public class RegionCode {
 
     @Builder(access = AccessLevel.PACKAGE)
     public RegionCode(Integer level,
-                      @Nullable Integer level1,
-                      @Nullable Integer level2,
-                      @Nullable Integer level3,
-                      @Nullable Integer level4) {
+                      Integer level1,
+                      Integer level2,
+                      Integer level3,
+                     Integer level4) {
         this.level = level;
         this.level1 = level1;
         this.level2 = level2;
@@ -56,7 +56,7 @@ public class RegionCode {
         final Integer level4 = Integer.parseInt(string.substring(8, 10));
 
         final int level = (int) Stream.of(level1, level2, level3, level4)
-                .filter(Objects::nonNull)
+                .filter(e -> e > 0)
                 .count() + 1;
 
         return new RegionCode(level, level1, level2, level3, level4);
@@ -81,33 +81,29 @@ public class RegionCode {
         Assert.isTrue(level < regionCode.getLevel(), "현재보다 하위 레벨을 지정해야 합니다.");
 
         if (level == 1) {
-            return new RegionCode(level, null, null, null, null);
+            return new RegionCode(level, 0, 0, 0, 0);
         }
 
         final Integer level1 = regionCode.getLevel1();
         if (level == 2) {
-            return new RegionCode(level, level1, null, null, null);
+            return new RegionCode(level, level1, 0, 0, 0);
         }
 
         final Integer level2 = regionCode.getLevel2();
         if (level == 3) {
-            return new RegionCode(level, level1, level2, null, null);
+            return new RegionCode(level, level1, level2, 0, 0);
         }
 
         final Integer level3 = regionCode.getLevel3();
         if (level == 4) {
-            return new RegionCode(level, level1, level2, level3, null);
+            return new RegionCode(level, level1, level2, level3, 0);
         }
 
         return new RegionCode(level, level1, level2, level3, regionCode.getLevel4());
     }
 
     public String serialize() {
-        final List<Integer> levels = Stream.of(getLevel1(), getLevel2(), getLevel3(), getLevel4())
-                .map(level -> level != null ? level : 0)
-                .toList();
-
-        return STRING_FORMAT.formatted(levels.get(0), levels.get(1), levels.get(2), levels.get(3));
+        return STRING_FORMAT.formatted(getLevel1(), getLevel2(), getLevel3(), getLevel4());
     }
 
 }
