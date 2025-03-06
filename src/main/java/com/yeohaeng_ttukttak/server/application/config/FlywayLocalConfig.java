@@ -16,7 +16,7 @@ public class FlywayLocalConfig {
         Flyway.configure()
                 .baselineOnMigrate(true)
                 .dataSource(dataSource)
-                .locations("classpath:db/data", "classpath:/db/migration")
+                .locations("classpath:db/data")
                 .load().migrate();
     }
 
