@@ -3,6 +3,7 @@ package com.yeohaeng_ttukttak.server.application.controller;
 import com.yeohaeng_ttukttak.server.application.dto.RegionDto;
 import com.yeohaeng_ttukttak.server.application.service.RegionService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;

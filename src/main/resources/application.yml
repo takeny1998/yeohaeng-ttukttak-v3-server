@@ -66,6 +66,8 @@ spring:
     password: ${spring.datasource.password}
     locations:
       - classpath:db/migration
+      - classpath:db/data
+
 ---
 spring:
   config:

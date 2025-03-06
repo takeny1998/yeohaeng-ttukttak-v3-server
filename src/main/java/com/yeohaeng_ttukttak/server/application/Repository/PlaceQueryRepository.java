@@ -23,7 +23,8 @@ public class PlaceQueryRepository {
 
     private final BayesianProperty bayesianProperty;
 
-    public List<PlaceDto> findAllByRegionCode(final RegionCode regionCode) {
+    public List<PlaceDto> findAllByRegionCode(final String stringCode) {
+        final RegionCode regionCode = RegionCode.fromString(stringCode);
 
         final QPlace place = QPlace.place;
         final QVisit visit = QVisit.visit;
@@ -40,9 +41,10 @@ public class PlaceQueryRepository {
     }
 
     private BooleanExpression eqRegionCode(final QPlace place, final RegionCode regionCode) {
-        return place.regionCode.level1.eq(regionCode.getLevel1())
-                .and(place.regionCode.level2.eq(regionCode.getLevel2()));
+        return place.region.code.level1.eq(regionCode.getLevel1())
+                .and(place.region.code.level2.eq(regionCode.getLevel2()));
     }
+
 
     /**
      * 베이지안 평균을 계산해 반환합니다.
