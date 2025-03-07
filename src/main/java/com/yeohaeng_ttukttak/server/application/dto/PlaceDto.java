@@ -2,7 +2,7 @@ package com.yeohaeng_ttukttak.server.application.dto;
 
 import com.querydsl.core.annotations.QueryProjection;
 import com.yeohaeng_ttukttak.server.domain.place.Place;
-import com.yeohaeng_ttukttak.server.domain.place.RegionCode;
+import com.yeohaeng_ttukttak.server.domain.region.RegionCode;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +18,7 @@ public final class PlaceDto {
 
     private final String name;
 
-    private final RegionCode regionCode;
+    private final RegionDto region;
 
     private final Double longitude;
 
@@ -34,7 +34,7 @@ public final class PlaceDto {
     public PlaceDto(final Place place, final Double rating, final Long visitCount) {
         this.id = place.getId();
         this.name = place.getName();
-        this.regionCode = place.getRegionCode();
+        this.region = RegionDto.fromEntity(place.getRegion());
         this.longitude = place.getCoordinates().getLongitude();
         this.latitude = place.getCoordinates().getLatitude();
 

@@ -1,5 +1,7 @@
 package com.yeohaeng_ttukttak.server.domain.place;
 
+import com.yeohaeng_ttukttak.server.domain.region.Region;
+import com.yeohaeng_ttukttak.server.domain.region.RegionCode;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
@@ -26,9 +28,9 @@ public class Place {
     @Embedded
     private Coordinates coordinates;
 
-    @Embedded
-    @NotNull
-    private RegionCode regionCode;
+    @ManyToOne
+    @JoinColumn(name = "region_id")
+    private Region region;
 
     @OneToMany(mappedBy = "place")
     private List<PlaceImage> images = new ArrayList<>();

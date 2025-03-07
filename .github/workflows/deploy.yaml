@@ -41,6 +41,7 @@ jobs:
             export DOCKER_USERNAME=${{ secrets.DOCKER_USERNAME }}
             export DATABASE_USERNAME=${{ secrets.DATABASE_USERNAME }}
             export DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }}
+            export JASYPT_PASSWORD=${{ secrets.JASYPT_PASSWORD }}
             
             docker compose down
             

@@ -2,19 +2,12 @@ spring:
   profiles:
     active: local
 
-  flyway:
-    enabled: true
-    baseline-on-migrate: true
-    url: ${spring.datasource.url}
-    user: ${spring.datasource.username}
-    password: ${spring.datasource.password}
-    locations:
-      - classpath:db/migration
-      - classpath:db/data
-
 bayesian:
   entire-average: 3.475
   coefficient: 15.0
+kakao:
+  map:
+    api-key: ENC(PbSFbZfTjOPh7SLcbhQhm58LUyk8NYksL8ES8sJ3FleJDd5lvMkXYk3gDAK/kkkD)
 
 ---
 spring:
@@ -32,6 +25,19 @@ spring:
     hibernate:
       ddl-auto: create-drop
 
+    properties:
+      hibernate:
+        highlight_sql: true
+
+  flyway:
+    enabled: false
+
+logging:
+  level:
+    org.hibernate.SQL: debug
+    org.hibernate.orm.jdbc.bind: trace
+    com.yeohaeng_ttukttak.server: debug
+
 ---
 spring:
   config:
@@ -40,9 +46,9 @@ spring:
 
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
-    url: ${DATABASE_URL}
-    username: ${DATABASE_USERNAME}
-    password: ${DATABASE_PASSWORD}
+    url: ENC(KyvOUNBS0wVq3DbPqnHeoVLbYrAfifkk083N5tlIdqO4nB5R+bwdLfTa5CsSZ3f5+hi2FGRBavze+/tbxoixPg==)
+    username: ENC(ukmkBnwGGffxfbsJxsOkqQ==)
+    password: ENC(ZPsOy+pXF7H1LNmO4WtntUQQF4Uyel0y)
 
   jpa:
     hibernate:
@@ -50,6 +56,17 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MariaDBDialect
+    defer-datasource-initialization: false
+
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+    url: ${spring.datasource.url}
+    user: ${spring.datasource.username}
+    password: ${spring.datasource.password}
+    locations:
+      - classpath:db/migration
+      - classpath:db/data
 
 ---
 spring:

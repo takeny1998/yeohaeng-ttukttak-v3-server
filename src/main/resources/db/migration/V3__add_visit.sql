@@ -1,4 +1,4 @@
-CREATE TABLE visit(
+CREATE TABLE IF NOT EXISTS visit(
     id BIGINT(20),
     visited_on DATE NOT NULL,
     rating FLOAT NOT NULL,
