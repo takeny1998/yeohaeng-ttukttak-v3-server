@@ -7,7 +7,7 @@ bayesian:
   coefficient: 15.0
 kakao:
   map:
-    api-key: ENC(PbSFbZfTjOPh7SLcbhQhm58LUyk8NYksL8ES8sJ3FleJDd5lvMkXYk3gDAK/kkkD)
+    api-key: ENC(qy1uWGyiqLYXFgEht8Y78iHjvR1zdvWY51jOv0kluDkI2S/5mT1+0T6xmmez2znC/+4DR7lg8q0TXC9o7IGkHGmf2rkc7OQrfECmKdHaRgo=)
 
 ---
 spring:
@@ -46,9 +46,9 @@ spring:
 
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
-    url: ENC(KyvOUNBS0wVq3DbPqnHeoVLbYrAfifkk083N5tlIdqO4nB5R+bwdLfTa5CsSZ3f5+hi2FGRBavze+/tbxoixPg==)
-    username: ENC(ukmkBnwGGffxfbsJxsOkqQ==)
-    password: ENC(ZPsOy+pXF7H1LNmO4WtntUQQF4Uyel0y)
+    url: ENC(PQUd+OouurHM/jG2OxlVhCmmQy38Qb/4NtlecdrTuz8wo5v1lh7FAY3lbTuaYdNVCjwoD1Rrvx+aBjk39CC/iwIYe+tm8aO2HoDyZSOn7uj4G2/fdHDuAgRoUy7UqPyU)
+    username: ENC(eW+muxJRDu3Y409Y//1AWv/FJ5LkWM7TBGg5SpQx2nYKnM9H/HmAQkV88kGX+MWH)
+    password: ENC(UJ4FvAhiNrScPCthzQIsNY1ZeRnPx2qvydWNSLe230mREUkUOa1o0pvCaAA7viKS)
 
   jpa:
     hibernate:
