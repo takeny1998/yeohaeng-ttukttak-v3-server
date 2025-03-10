@@ -25,16 +25,16 @@ class RegionCodeTest {
     void withLowerLevelTest() {
         // Given
         final RegionCode regionCode = RegionCode.builder()
-                .level(4).level1(11).level2(110).level3(103).build();
+                .level(4).level1(11).level2(110).level3(103).level4(10).build();
 
         final RegionCode codeLevel1 = RegionCode.builder()
-                .level(1).level1(0).level2(0).level3(0).level4(0).build();
+                .level(1).level1(11).level2(0).level3(0).level4(0).build();
 
         final RegionCode codeLevel2 = RegionCode.builder()
-                .level(2).level1(11).level2(0).level3(0).level4(0).build();
+                .level(2).level1(11).level2(110).level3(0).level4(0).build();
 
         final RegionCode codeLevel3 = RegionCode.builder()
-                .level(3).level1(11).level2(110).level3(0).level4(0).build();
+                .level(3).level1(11).level2(110).level3(103).level4(0).build();
 
         // When
         final RegionCode withLevel1 = RegionCode.withLowerLevel(regionCode, 1);

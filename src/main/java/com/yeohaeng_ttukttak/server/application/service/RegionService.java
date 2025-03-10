@@ -28,7 +28,11 @@ public class RegionService {
                 .findByCoords(longitude, latitude)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
+        System.out.println("foundRegionCode = " + foundRegionCode);
+
         final RegionCode regionCode = RegionCode.withLowerLevel(foundRegionCode, level);
+
+        System.out.println("regionCode = " + regionCode);
 
         final Region region = repository.findByCode(regionCode)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));

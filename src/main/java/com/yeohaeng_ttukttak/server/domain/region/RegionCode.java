@@ -57,7 +57,7 @@ public class RegionCode {
 
         final int level = (int) Stream.of(level1, level2, level3, level4)
                 .filter(e -> e > 0)
-                .count() + 1;
+                .count();
 
         return new RegionCode(level, level1, level2, level3, level4);
     }
@@ -80,22 +80,18 @@ public class RegionCode {
         Assert.isTrue(0 < level && level < 6, "level은 1부터 4까지의 정수여야 합니다.");
         Assert.isTrue(level < regionCode.getLevel(), "현재보다 하위 레벨을 지정해야 합니다.");
 
-        if (level == 1) {
-            return new RegionCode(level, 0, 0, 0, 0);
-        }
-
         final Integer level1 = regionCode.getLevel1();
-        if (level == 2) {
+        if (level == 1) {
             return new RegionCode(level, level1, 0, 0, 0);
         }
 
         final Integer level2 = regionCode.getLevel2();
-        if (level == 3) {
+        if (level == 2) {
             return new RegionCode(level, level1, level2, 0, 0);
         }
 
         final Integer level3 = regionCode.getLevel3();
-        if (level == 4) {
+        if (level == 3) {
             return new RegionCode(level, level1, level2, level3, 0);
         }
 
