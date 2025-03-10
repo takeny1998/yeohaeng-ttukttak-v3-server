@@ -78,7 +78,7 @@ public class RegionCode {
         Assert.notNull(regionCode, "regionCodoe는 필수 값입니다.");
         Assert.notNull(level, "level은 필수 값입니다.");
         Assert.isTrue(0 < level && level < 6, "level은 1부터 4까지의 정수여야 합니다.");
-        Assert.isTrue(level < regionCode.getLevel(), "현재보다 하위 레벨을 지정해야 합니다.");
+        Assert.isTrue(level <= regionCode.getLevel(), "현재보다 하위 레벨을 지정해야 합니다.");
 
         final Integer level1 = regionCode.getLevel1();
         if (level == 1) {
