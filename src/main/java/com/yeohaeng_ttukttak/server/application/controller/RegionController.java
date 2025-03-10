@@ -20,7 +20,7 @@ public class RegionController {
 
     @GetMapping
     public Map<String, Object> findByCoords(
-            @RequestParam int level, @RequestParam Double longitude, @RequestParam Double latitude) {
+            @RequestParam(required = false, defaultValue = "3") Integer level, @RequestParam Double longitude, @RequestParam Double latitude) {
 
         final RegionDto regionDto = regionService.findByCoords(level, longitude, latitude);
 
